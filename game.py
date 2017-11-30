@@ -15,12 +15,12 @@ class Game:
     ]
     self.monster = self.get_next_monster()
 
-  def inventory(self):
-    self.items = ['potion', 'potion,', 'bottle of dust']
+  def inventory(self, items):
     try:
       counter = 1
-      for i in self.items:
-        print("[" + counter + "]" + i)
+      print("\n")
+      for i in items:
+        print("[" + str(counter) + "]" + i)
         counter += 1
     except IndexError:
       return None
@@ -72,12 +72,15 @@ class Game:
 
     # INVENTORY NEEDS TO BE IMPLEMENTED
     elif player_choice == 'i':
-      self.inventory()
-      player_choice = input("\nType in item number: ").lower()
-      if (inventory.items[(player_choice + 1)] == 'potion'):
-          self.player.rest()
-          self.player.rest()
-      elif (inventory.items[(player_choice + 1)] == null):
+      self.items = ['potion', 'potion', 'bottle of dust']
+      self.inventory(self.items)
+      player_choice = input("\nType in item number: ")
+      if ((int(player_choice) - 1) < len(self.items)):
+          if (self.items[(int(player_choice) - 1)] == 'potion'):
+              print("You feel rejuvenated!")
+              self.player.rest()
+              self.player.rest()
+      elif ((int(player_choice) - 1) >= len(self.items)):
           print("Your inventory does not go that deep, it seems...")
       else:
           print("The item you picked out did nothing and vanished!")
