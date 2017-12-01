@@ -16,6 +16,8 @@ class Monster(Combat):
   max_experience = 1
   weapon = 'sword'
   sound = 'roar'
+  items = ['potion', 'pizza', 'box of breakfast pizza',
+           'glitter', 'speck of dust']
 
   def __init__(self, **kwargs):
     self.hit_points = random.randint(self.min_hit_points,

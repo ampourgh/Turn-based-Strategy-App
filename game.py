@@ -1,8 +1,9 @@
 import sys
 
 from character import Character
-from monster import Dragon, Goblin, Troll
+from monster import Dragon, Goblin, Troll, Monster
 from clear import clear_screen
+import random
 
 
 class Game:
@@ -74,6 +75,11 @@ class Game:
       self.player.experience += self.monster.experience
       print("You killed {}!".format(self.monster))
       self.monster = self.get_next_monster()
+
+      print("{} droped a {}!".format(self.monster, Monster.items[0]))
+      self.player.items.append(Monster.items[random.randint(0, 4)])
+
+
 
   def __init__(self):
     self.setup()

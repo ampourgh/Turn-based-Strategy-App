@@ -3,7 +3,7 @@ import random
 from combat import Combat
 
 class Character(Combat):
-  attack_limit = 10
+  attack_limit = 100
   experience = 0
   base_hit_points = 10
 
@@ -60,10 +60,10 @@ class Character(Combat):
               print("You feel rejuvenated!")
               self.rest()
               self.rest()
-      elif ((int(player_choice) - 1) >= len(self.items)):
-          print("Your inventory does not go that deep, it seems...")
+          else:
+              print("The item you picked out did nothing and vanished!")
       else:
-          print("The item you picked out did nothing and vanished!")
+          print("Your inventory does not go that deep, it seems...")
 
   def show_inventory(self, items):
     try:
