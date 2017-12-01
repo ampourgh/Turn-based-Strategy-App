@@ -46,3 +46,31 @@ class Character(Combat):
 
   def leveled_up(self):
     return self.experience >= 5
+
+  items = ['potion', 'potion', 'bottle of dust']
+
+  def inventory(self):
+
+      self.show_inventory(self.items)
+
+      player_choice = input("\nType in item number: ")
+
+      if ((int(player_choice) - 1) < len(self.items)):
+          if (self.items[(int(player_choice) - 1)] == 'potion'):
+              print("You feel rejuvenated!")
+              self.rest()
+              self.rest()
+      elif ((int(player_choice) - 1) >= len(self.items)):
+          print("Your inventory does not go that deep, it seems...")
+      else:
+          print("The item you picked out did nothing and vanished!")
+
+  def show_inventory(self, items):
+    try:
+      counter = 1
+      print("\n")
+      for i in items:
+        print("[" + str(counter) + "]" + i)
+        counter += 1
+    except IndexError:
+      return None
