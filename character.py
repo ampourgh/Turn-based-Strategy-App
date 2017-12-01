@@ -57,11 +57,20 @@ class Character(Combat):
 
       if ((int(player_choice) - 1) < len(self.items)):
           if (self.items[(int(player_choice) - 1)] == 'potion'):
+              self.rest()
+              self.rest()
               print("You feel rejuvenated!")
-              self.rest()
-              self.rest()
+              discard_choice = input("")
+              if input("\nDiscard the empty jug? Y/N ").lower() == 'y':
+                  print("You drop the jug to the ground and it shatters to pieces.")
+                  del self.items[(int(player_choice) - 1):(int(player_choice)):]
+              else:
+                  print("You tucked the jug back into your inventory.")
+                  del self.items[(int(player_choice) - 1):(int(player_choice)):]
+                  self.items.append('empty jug')
           else:
               print("The item you picked out did nothing and vanished!")
+              del self.items[(int(player_choice) - 1):(int(player_choice)):]
       else:
           print("Your inventory does not go that deep, it seems...")
 
@@ -70,7 +79,7 @@ class Character(Combat):
       counter = 1
       print("\n")
       for i in items:
-        print("[" + str(counter) + "]" + i)
+        print("[" + str(counter) + "] " + i)
         counter += 1
     except IndexError:
       return None

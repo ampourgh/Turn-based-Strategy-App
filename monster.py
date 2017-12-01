@@ -16,7 +16,7 @@ class Monster(Combat):
   max_experience = 1
   weapon = 'sword'
   sound = 'roar'
-  items = ['potion', 'pizza', 'box of breakfast pizza',
+  items = ['potion', 'box of pizza', 'box of breakfast pizza',
            'glitter', 'speck of dust']
 
   def __init__(self, **kwargs):
